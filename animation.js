@@ -6,13 +6,8 @@
     The author provides absolutely no warranty for anything related to this file.
  */
 
-// ToDo: Make this a parameter to the main function
-window.dotLoadingConfig = {
-    canvas: "__particles_canvas"
-};
-
 // Don't pollute window (besides our config, oh well)
-let dotLoading = (function() {
+window.dotLoading = (function() {
     // Physics engine constants
     const gravity = 0.2; // Gravity in pixels per frame
     const friction = 0.025; // Friction (reduction of speed to the sides)
@@ -260,5 +255,3 @@ let dotLoading = (function() {
 
     return {stopEverything, startEverything}
 })();
-
-dotLoading.startEverything();
