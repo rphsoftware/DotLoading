@@ -76,17 +76,13 @@ window.dotLoading = (function() {
 
     /* region Canvas Setup */
     // Acquire both the canvas object and the rendering context
-    const canvas = document.getElementById(window.dotLoadingConfig.canvas);
-    const renderingContext = canvas.getContext("2d");
+    let canvas = null;
+    let renderingContext = null;
 
     function updateCanvasSize() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
-    updateCanvasSize();
-
-    // We don't want the canvas to distort itself
-    window.addEventListener("resize", updateCanvasSize);
     /* endregion */
 
     /* region Render loop */
@@ -239,6 +235,12 @@ window.dotLoading = (function() {
 
     function startEverything() {
         stop = 0;
+        canvas = document.getElementById(window.dotLoadingConfig.canvas);
+        renderingContext = canvas.getContext("2d");
+        updateCanvasSize();
+
+        // We don't want the canvas to distort itself
+        window.addEventListener("resize", updateCanvasSize);
         objects.clear();
         for (let i = 0; i < 10; i++)
             additionLoop();
